@@ -132,7 +132,7 @@ footer a {
 }
 footer a:hover {
   text-decoration: none;
-  color: red;
+  color: gray;
 }
 .download-button-container {
   text-align: center;
