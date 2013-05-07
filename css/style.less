@@ -1,0 +1,549 @@
+@lnp-color: rgb(0, 80, 143);
+@alp-color: rgb(210, 16, 52);
+@primary-text-color: white;
+@secondary-text-color: #eeeeee;
+
+@party-logo-top-bottom-margin: 20px;
+@party-logo-left-right-margin: 10px;
+
+@p-size: 18px;
+@h3-size: 22px;
+
+.progress .bar {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+
+/* Backgrounds */
+#alp-background {
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    width: 50%;
+    background-color: @alp-color;
+    z-index: -99;
+}
+
+/*@media(max-width: 470px) {
+    #alp-background {
+        width: 470px;
+    }
+}*/
+
+#lnp-background {
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    width: 50%;
+    left: 50%;
+    background-color: @lnp-color;
+    z-index: -100;
+}
+
+#stop-watch {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 300px;
+    height: 341px;
+    background-image: url('../img/stop-watch.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -50;
+}
+
+@media(max-width: 1320px) {
+    #stop-watch {
+        display: none;
+    }
+}
+
+.container {
+    width: 780px;
+}
+
+body {
+    position: relative;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif; 
+}
+
+/* Custom container */
+.container-narrow {
+    margin: 0 auto;
+    max-width: 760px;
+}
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+    margin: 60px 0;
+    text-align: center;
+}
+.jumbotron h1 {
+font-size: 72px;
+    line-height: 1;
+}
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+    margin: 60px 0;
+}
+.marketing p + h4 {
+    margin-top: 28px;
+}
+
+.download-case {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 15px;
+}
+
+.download-case h1 {
+    margin: 0px;
+    color: @primary-text-color;
+    text-align: center;
+    text-shadow: 1px 1px rgba(0,0,0,0.25);
+    line-height: 1.2em;
+}
+
+.download-case h3 {
+    margin: 0px;
+    color: @secondary-text-color;
+    text-align: center;
+    font-weight: 600;
+    font-size: @h3-size;
+}
+
+.download-case p {
+    color: @secondary-text-color;
+    text-align: left;
+    font-weight: 400;
+    font-size: @p-size;
+    line-height: 1.2em;
+    padding: 5px;
+    text-shadow: rgba(0,0,0,0.25);
+}
+
+.download-case .quote {
+    color: @primary-text-color;
+    text-align: center;
+    font-size: @p-size;
+    font-weight: 600;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+footer {
+    margin: 15px;
+    text-align: center;
+    text-shadow: 1px 1px rgba(0,0,0,0.25);
+    font-weight: 600;
+    color: #dddddd;
+    a {
+        font-size: 24px;
+        font-weight: 700;
+        text-decoration: none;
+        color: white;
+    }
+    a:hover {
+        text-decoration: none;
+        color: red;
+    }
+}
+
+.download-button-container {
+    text-align: center;
+}
+
+.primary-title {
+    text-align: center;
+}
+
+.primary-title h1 {
+    color: @primary-text-color;
+    padding-top: 25px;
+    padding-bottom: 15px;
+    margin: 0px;
+    text-align: center;
+    font-size: 45pt;
+    font-weight: 800;
+    line-height: 55pt;
+    text-shadow: 1px 1px rgba(0,0,0,0.25);
+}
+
+.primary-title img {
+    text-align: center;
+    padding: 10px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    width: 80%;
+    margin: 0px auto;
+    background-image: -webkit-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0)); 
+    background-image:    -moz-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0)); 
+    background-image:     -ms-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0)); 
+    background-image:      -o-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0)); 
+}
+
+.section-header {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    div.span12 {
+        min-height: auto;
+    }
+    h4 {
+        display: none;
+        text-align: right;
+        color: @secondary-text-color;
+        font-variant: small-caps;
+    }
+}
+
+@itunes-background-color: rgb(218, 222, 224);
+
+.itunes-download-progress-outer {
+    background-image: -webkit-linear-gradient(bottom, #d3d6d9 0%, #e9ebed 100%);
+    position: relative;
+    padding: 10px;
+}
+
+.itunes-download-progress {
+    background: @itunes-background-color;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    border-width: 1px;
+    border-color: black;
+    height: 130px;
+}
+
+.itunes-download-progress h2 {
+    color: #4f5459;
+    font-size: 16px;
+    line-height: 20px;
+    text-shadow: 1px 1px white;
+    text-align: left;
+    margin: 0px;
+    padding: 0px;
+    padding-top: 20px;
+}
+
+.itunes-download-progress h1 {
+    color: black;
+    text-shadow: 1px 1px white;
+    font-size: 22px;
+    text-align: left;
+    margin: 0px;
+    padding: 0px;
+    margin-bottom: 5px;
+}
+
+.itunes-download-progress img {
+    width: 70px;
+    float: left;
+    margin: 10px;
+    margin-top: 30px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.itunes-download-progress .progress {
+    width: 70%;
+    border-radius: 4px;
+    height: 5px;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    background-image: -webkit-linear-gradient(bottom, white 0%, #a4a4a4 100%);
+    margin: 0px;
+    margin-bottom: 5px;
+}
+
+.itunes-download-progress .bar {
+    background-image: -webkit-linear-gradient(bottom, #2676d5 0%, #98b9e6 100%);
+}
+
+.itunes-download-progress p {
+    color: #4f5459;
+    text-shadow: 1px 1px white;
+    font-size: 14px;
+    text-align: left;
+    margin: 0px;
+    padding: 0px;
+    font-weight: 700;
+}
+
+.download-button,
+.upload-button {
+    margin-top: 20px;
+}
+
+.youtube-upload-progress {
+    background: white;
+    border-width: 1px;
+    border-color: #dddddd;
+    height: 125px;
+    padding: 10px;
+    h1 {
+        text-shadow: none;
+        color: black;
+        font-size: 24px;
+        text-align: left;
+    }
+
+    p {
+        text-shadow: none;
+        color: #555555;
+        font-size: 16px;
+        line-height: 16px;
+        text-align: left;
+        margin: 0px;
+        padding: 2px;
+    }
+
+    .progress {
+        background: url('../img/upload-progress-background.png');
+        background-repeat: both;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        .bar {
+            color: #438bc5;
+        }
+    }
+}
+
+.party-title {
+    font-weight: 600;
+    font-size: 24px;
+    text-shadow: 1px 1px rgba(0,0,0,0.25);
+}
+
+.hidden {
+    display: none;
+}
+
+.dropbox-sync-progress {
+    position: relative;
+    background: white;
+    height: 160px;
+
+    .dxf-icon {
+        display: inline-block;
+        margin-top: 5px;
+        margin-left: 25px;
+        margin-right: 25px;
+        height: 48px;
+        width: 48px;
+        background: url('../img/dxf-257.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        .dropbox-overlay {
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        .dropbox-overlay-ok {
+            background-image: url('../img/dropbox-file-ok-overlay.png');
+        }
+
+        .dropbox-overlay-sync {
+            background-image: url('../img/dropbox-file-sync-overlay.png');
+        }
+
+        h5 {
+            margin-top: 52px;
+            text-align: center;
+            font-size: 12px;
+            line-height: 13px;
+            margin-left: -10px;
+            margin-right: -10px;
+        }
+    }
+
+    .taskbar {
+        position: absolute;
+        background: #d4d0c8;
+        width: 100%;
+        height: 44px;
+        bottom: 0px;
+        hr {
+            background: white;
+            width: 100%;
+            margin-top: 1px;
+        }
+        .dropbox-icon {
+            position: absolute;
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 32px;
+            width: 32px;
+            right: 10px;
+            bottom: 3px;
+        }
+        .dropbox-progress {
+            position: absolute;
+            background-color: white;
+            height: 32px;
+            width: 270px;
+            margin: 6px;
+            margin-top: 4px;
+            border-color: black;
+            border-width: 1px;
+            border-style: solid;
+            div {
+                font-size: 12px;
+                line-height: 13px;
+                color: black;
+                margin-left: 6px;
+                margin-top: 2px;
+                vertical-align: center;
+            }
+        }
+
+        .dropbox-icon-idle {
+            background-image: url('../img/dropbox-tray-idle.png');
+        }
+        .dropbox-icon-sync1 {
+            background-image: url('../img/dropbox-tray-sync1.png');
+        }
+        .dropbox-icon-sync2 {
+            background-image: url('../img/dropbox-tray-sync2.png');
+        }
+        .dropbox-icon-ok {
+            background-image: url('../img/dropbox-tray-ok.png');
+        }
+    }
+}
+
+.btn.disabled {
+    opacity: 1;
+}
+
+.facebook-upload-progress {
+    background: white;
+    height: 150px;
+    .facebook-header {
+        h2 {
+            font-weight: 700;
+            font-size: 24px;
+            margin: 5px;
+            color: white;
+        }
+        background: #6e82b7
+    }
+    h3 {
+        font-size: 16px;
+        color: black;
+        text-align: left;
+        margin-left: 10px;
+        margin-bottom: 0px;
+    }
+    .progress {
+        height: 20px;
+        border-radius: 0px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #aaaaaa;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 0px;
+    }
+
+    .progress .bar {
+        height: 20px;
+        background: #7081b5;
+        border-radius: 0px;
+    }
+
+    p {
+        color: #555555;
+        margin-left: 10px;
+        margin-top: 8px;
+        padding: 0px;
+        font-size: 14px;
+        line-height: 12px;
+    }
+}
+
+.share-button {
+    margin: 5px;
+}
+
+.social-network-share-top:hover {
+    opacity: 1.0;
+}
+.social-network-share-bottom {
+    margin-left: 70px;
+    margin-top: 35px;
+    div, span {
+        vertical-align: top !important;
+        font-size: 1px;
+    }
+}
+.social-network-share-top {
+    position: absolute;
+    opacity: 0.3;
+    width: 240px;
+    height: 60px;
+    right: 2px;
+    top: 5px;
+    div, span {
+        vertical-align: top !important;
+        font-size: 1px;
+    }
+
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+}
+
+@media (max-width: 1155px) {
+    .social-network-share-top {
+        display: none;
+    }
+}
+
+.party-logo {
+    position: relative;
+    margin: @party-logo-top-bottom-margin 0 @party-logo-top-bottom-margin 0;
+}
+
+.left .party-logo {
+    height: auto;
+    width: 100%;
+}
+
+.right .party-logo {
+    height: auto;
+    width: 100%;
+}
+
+.pollys {
+    .polly-span {
+      text-align: center;
+    }
+    img {
+        margin: 5px;
+        border-radius: 10px;
+    }
+    h3 {
+      font-size: 32px;
+      margin: 10px;
+    }
+}
