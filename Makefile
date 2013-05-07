@@ -1,5 +1,5 @@
 LESSC=./components/less.js/bin/lessc
-UGLIFYJS=/home/ganon/contrib/node-v0.8.17-linux-x64/bin/uglifyjs
+UGLIFYJS=uglifyjs
 
 LESS=$(wildcard css/*.less)
 CSS=$(LESS:.less=.css)
