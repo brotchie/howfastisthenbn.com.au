@@ -478,3 +478,21 @@ hr {
   font-size: 32px;
   margin: 10px;
 }
+#about-me img {
+  float: left;
+  margin: 10px;
+}
+#about-me .bio,
+#about-me .github {
+  width: 500px;
+}
+#about-me .bio .signature,
+#about-me .github .signature {
+  font-weight: 700;
+}
+#about-me .social {
+  text-align: center;
+}
+#about-me .social .social-button {
+  margin: 5px;
+}
