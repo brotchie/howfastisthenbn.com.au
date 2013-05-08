@@ -1,18 +1,2 @@
 # HowFastIsTheNBN.com.au
-The source for the howfastisthenbn.com website. Feel free to send me pull requests with fixes or enhancements.
-
-## Development
-You'll need npm (https://npmjs.org/) and bower (https://github.com/bower/bower) already installed.
-
-```
-$ git clone git@github.com:brotchie/howfastisthenbn.com.au.git
-$ cd howfastisthenbn.com.au
-
-$ bower install
-$ npm install uglify-js
-
-# Compile .less to .css and minify .js files.
-$ make
-# Run local webserver.
-$ twistd web --path=. -p 8080
-```
+Start again, this time actually put some realistic calculations in your code. I have 100/100 fibre and it takes 10 minutes to upload 1GB to a Sydney server.
