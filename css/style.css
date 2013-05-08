@@ -496,3 +496,7 @@ hr {
 #about-me .social .social-button {
   margin: 5px;
 }
+.annotation {
+  opacity: 0;
+  color: red;
+}
