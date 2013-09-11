@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Write a letter to your MP supporting a FTTP NBN</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script src="//rangy.googlecode.com/svn/trunk/currentrelease/rangy-core.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/hallo.js/1.0.2/hallo.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+  </head>
+  <body>
+    <div class="letter">
+      <div class="from-address">
+        <input data-flow="0" placeholder="Firstname Lastname" class="entry from-entry from-name"></input>
+        <input data-flow="1" placeholder="55 Broadband St" class="entry from-entry from-street"></input>
+        <input data-flow="2" placeholder="Suburb STATE Postcode" class="entry from-entry from-suburb"></input>
+        <p class="date entry from-entry"></p>
+      </div>
+      <div class="to-address">
+        <p class="entry to-entry">The Hon Malcolm Turnbull, MP<span class="note">Autofilled from address</span></p>
+        <p class="entry to-entry">The House of Representatives</p>
+        <p class="entry to-entry">Parliament House, Canberra ACT 2600</p>
+      </div>
+      <div class="letter-content">
+        <p>Dear Minister,</p>
+        <h2 class="attn-line">The Coalition's Broadband Policy</h2>
+        <p class="paragraph paragraph-introduction"></p>
+        <p class="paragraph paragraph-content"></p>
+        <p class="paragraph paragraph-conclusion"></p>
+        <p>Yours Sincerely,</p>
+        <p class="from-name-signature">Your Name</p>
+      </div>
+    </div>
+    <div class="floating-note introduction-note"><strong>Introduction</strong> Notes and guidance on what to write in the introduciton.</div>
+    <div class="floating-note content-note"><strong>Your Primary Message</strong> Notes and guidance on what to write in the main letter "body".</div>
+    <div class="floating-note conclusion-note"><strong>Conclusion</strong> Notes and guidance on what to write in the conclusion.</div>
+
+    <button class="print-button">Print</button>
+
+    <script>
+      $(function(){
+        $('input').keydown(function(e){
+          if (e.keyCode === 13) {
+            var currentStop = Number($(this).data('flow'));
+            var nextStop = currentStop + 1;
+            $('[data-flow="' + nextStop+'"]').focus();
+          }
+        });
+        $('.from-name').on('change', function(){
+          console.log('change');
+          console.log($('.from-name').val());
+          $('.from-name-signature').text($('.from-name').val());
+        });
+        $('.date').text(moment().format('Do MMMM YYYY'));
+        $('.paragraph').hallo();
+        function positionNote(paragraph, note) {
+          $(note).css('top', $(paragraph).offset().top);
+        }
+        positionNote('.paragraph-introduction', '.introduction-note');
+        positionNote('.paragraph-content', '.content-note');
+        positionNote('.paragraph-conclusion', '.conclusion-note');
+
+        $('.print-button').on('click', function(){
+          window.print();
+        });
+      });
+    </script>
+  </body>
+</html>

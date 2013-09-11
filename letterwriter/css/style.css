@@ -1,0 +1,118 @@
+.letter {
+  position: relative;
+  width: 750px;
+  background: rgba(0,0,0,0.1);
+  padding: 15px;
+}
+
+.from-address {
+  float:right;
+}
+
+.to-address {
+  clear: both;
+}
+
+.entry {
+  display: block;
+  border-style: none;
+  width: 280px;
+  margin: 2px;
+}
+
+.from-entry {
+  text-align: right;
+  padding: 5px;
+}
+
+.to-entry {
+  width: 400px;
+}
+
+.note {
+  color: #777777;
+  font-size: 12px;
+}
+
+.attn-line {
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+}
+
+.paragraph {
+  padding: 5px;
+}
+
+.paragraph-introduction {
+  min-height: 120px;
+  background-color: rgba(0,255,0,0.15);
+}
+
+.introduction-note {
+  height: 120px;
+}
+
+.paragraph-content {
+  min-height: 150px;
+  background-color: rgba(255,255,0,0.15);
+}
+
+.content-note {
+  height: 150px;
+}
+
+.paragraph-conclusion {
+  min-height: 100px;
+  background-color: rgba(0,0,255,0.15);
+}
+
+.conclusion-note {
+  height: 100px;
+}
+
+.floating-note {
+  position: absolute;
+  background-color: rgba(255,255,0,0.15);
+  width: 300px;
+  left: 800px;
+  padding: 5px;
+}
+
+.print-button {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  font-size: 40px;
+  padding: 15px;
+  color: red;
+}
+
+@media print {
+  .floating-note, .note {
+    display: none;
+  }
+
+  body {
+    padding: 50px;
+  }
+
+  .paragraph {
+    min-height: auto;
+  }
+
+  .entry {
+    padding: 0px;
+  }
+  .to-address {
+    margin-top: 200px;
+  }
+
+  .from-address {
+    margin-top: 25px;
+    margin-right: 20px;
+  }
+  .print-button {
+    display: none;
+  }
+}
