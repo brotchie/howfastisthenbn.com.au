@@ -1,3 +1,6 @@
+body {
+  font-family: Georgia;
+}
 .letter {
   position: relative;
   width: 750px;
@@ -97,8 +100,10 @@
     padding: 50px;
   }
 
-  .paragraph {
-    min-height: auto;
+  .paragraph-introduction,
+  .paragraph-content,
+  .paragraph-conclusion {
+    min-height: 0px !important;
   }
 
   .entry {

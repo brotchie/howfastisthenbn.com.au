@@ -1,0 +1,14 @@
+{
+  "name": "letterwriter",
+  "version": "0.0.1",
+  "description": "Web-based MP letter writer",
+  "main": "app.js",
+  "private": true,
+  "author": "James Brotchie <brotchie@gmail.com>",
+  "dependencies": {
+    "openaustralia": "0.0.1",
+    "beeline": "~0.1.15",
+    "memcached": "~0.2.5",
+    "async": "~0.2.9"
+  }
+}
