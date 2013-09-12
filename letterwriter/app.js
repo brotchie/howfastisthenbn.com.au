@@ -3,13 +3,15 @@ var OpenAustralia = require('openaustralia'),
     apiKeys = require('./keys.json'),
     async = require('async'),
     http = require('http'),
-    beeline = require('beeline'),
+    bee = require('beeline'),
     port = process.env.PORT || 9090;
 
 var api = new OpenAustralia(apiKeys.OA_API_KEY);
 var db = new Memcached(['localhost:11211']);
 
-var router = beeline.route({
+var router = bee.route({
+  '/': bee.staticFile('./index.html', 'text/html'),
+  '/css/style.css': bee.staticFile('./css/style.css', 'text/css'),
   '/postcode/`postcode`': function(req, res, tokens) {
     var key = 'postcode|' + tokens.postcode;
     async.waterfall([
@@ -20,7 +22,7 @@ var router = beeline.route({
         if (data) {
           next(null, JSON.parse(data));
         } else {
-          api.getRepresentatives({ postcode: tokens.postcode },
+          api.getRepresentatives({ postcode: tokens.postcode, date: '2013-09-11'},
             function(err, result) {
               if (err) {
                 next(err);
@@ -42,6 +44,8 @@ var router = beeline.route({
     });
   }
 });
+
+
 
 var server = http.createServer(router);
 server.listen(port);

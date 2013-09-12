@@ -7,19 +7,23 @@
     <script src="//rangy.googlecode.com/svn/trunk/currentrelease/rangy-core.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/hallo.js/1.0.2/hallo.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.1.0-bundled/backbone.marionette.min.js"></script>
+
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css"/>
     <link rel="stylesheet" href="css/style.css"/>
   </head>
   <body>
     <div class="letter">
       <div class="from-address">
-        <input data-flow="0" placeholder="Firstname Lastname" class="entry from-entry from-name"></input>
-        <input data-flow="1" placeholder="55 Broadband St" class="entry from-entry from-street"></input>
-        <input data-flow="2" placeholder="Suburb STATE Postcode" class="entry from-entry from-suburb"></input>
+        <input data-flow="0" type="text" placeholder="Firstname Lastname" class="entry from-entry from-name"></input>
+        <input data-flow="1" type="text" placeholder="55 Broadband St" class="entry from-entry from-street"></input>
+        <input data-flow="2" type="text" placeholder="Suburb STATE Postcode" class="entry from-entry from-suburb"></input>
         <p class="date entry from-entry"></p>
       </div>
       <div class="to-address">
-        <p class="entry to-entry">The Hon Malcolm Turnbull, MP<span class="note">Autofilled from address</span></p>
+        <p class="entry to-entry">The Hon, <span class="to-name">Politician Name</span>, MP</p>
         <p class="entry to-entry">The House of Representatives</p>
         <p class="entry to-entry">Parliament House, Canberra ACT 2600</p>
       </div>
@@ -40,7 +44,69 @@
     <button class="print-button">Print</button>
 
     <script>
+      var Letter = Backbone.Model.extend();
+      var LetterView = Marionette.ItemView.extend({
+        events: {
+          'change .from-name': 'onFullnameEntered',
+          'input .from-suburb': 'onSuburbEntered'
+        },
+        modelEvents: {
+          'change:fullname': 'onFullnameChanged',
+          'change:representative': 'onRepresentativeChanged'
+        },
+        ui: {
+          fullname: '.from-name',
+          street: '.from-street',
+          suburb: '.from-suburb',
+          signatureName: '.from-name-signature',
+          representativeName: '.to-name',
+          date: '.date'
+        },
+        initialize: function() {
+          this.bindUIElements();
+          this.ui.date.text(moment().format('Do MMMM YYYY'));
+        },
+        onFullnameEntered: function() {
+          this.model.set('fullname', this.ui.fullname.val());
+        },
+        onFullnameChanged: function(model, fullname) {
+          this.ui.signatureName.text(fullname);
+        },
+        onSuburbEntered: function() {
+          var suburb = this.ui.suburb.val();
+          var match = suburb.match(/[0-9]{4}/g);
+          if (match) {
+            this.model.set('postcode', match[0]);
+          }
+        },
+        onRepresentativeChanged: function(model, representative) {
+          this.ui.representativeName.text(representative.full_name);
+        },
+        onPrint: function() {
+          window.print();
+        }
+      });
+
       $(function(){
+        var letter = new Letter();
+        var letterView = new LetterView({
+          model: letter,
+          el: $('.letter'),
+        });
+
+        letter.on('change:postcode', function(model, postcode) {
+          $.getJSON('/postcode/' + postcode, function(data) {
+            model.set('representative', data[0]);
+          });
+        });
+
+        $('.print-button').click(function() {
+          window.print();
+        });
+
+        $('.paragraph').hallo();
+
+        return;
         $('input').keydown(function(e){
           if (e.keyCode === 13) {
             var currentStop = Number($(this).data('flow'));
@@ -48,23 +114,12 @@
             $('[data-flow="' + nextStop+'"]').focus();
           }
         });
-        $('.from-name').on('change', function(){
-          console.log('change');
-          console.log($('.from-name').val());
-          $('.from-name-signature').text($('.from-name').val());
-        });
-        $('.date').text(moment().format('Do MMMM YYYY'));
-        $('.paragraph').hallo();
         function positionNote(paragraph, note) {
           $(note).css('top', $(paragraph).offset().top);
         }
         positionNote('.paragraph-introduction', '.introduction-note');
         positionNote('.paragraph-content', '.content-note');
         positionNote('.paragraph-conclusion', '.conclusion-note');
-
-        $('.print-button').on('click', function(){
-          window.print();
-        });
       });
     </script>
   </body>
