@@ -501,6 +501,6 @@ hr {
   margin: 5px;
 }
 .annotation {
-  opacity: 0;
+  opacity: 1;
   color: red;
 }
